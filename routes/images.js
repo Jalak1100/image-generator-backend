@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import jwt from 'jsonwebtoken';
-import Image from '../models/Image.js';
+import Image from '../models/image.js';
 import User from '../models/User.js'; // MUST IMPORT USER MODEL FOR CREDITS
 
 const __filename = fileURLToPath(import.meta.url);
