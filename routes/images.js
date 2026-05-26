@@ -96,7 +96,11 @@ router.post('/generate', async (req, res) => {
         const fileName = `art_${Date.now()}.jpg`;
         const savePath = path.join(uploadDir, fileName);
         fs.writeFileSync(savePath, Buffer.from(buffer));
-        const permanentUrl = `http://localhost:5000/uploads/${fileName}`;
+        const baseUrl = req.get('host').includes('localhost') 
+            ? 'http://localhost:5000' 
+            : `https://${req.get('host')}`;
+
+        const permanentUrl = `${baseUrl}/uploads/${fileName}`;
 
         // --- DATABASE SAVE & CREDIT DEDUCTION ---
         if (user) {
